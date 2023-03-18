@@ -1,0 +1,13 @@
+When you configure Terraform to use an S3 bucket as a remote state backend, Terraform will automatically handle fetching the remote state data from the S3 bucket when you run Terraform commands like terraform plan or terraform apply.
+
+Here is a high-level overview of how Terraform fetches the remote state data from S3:
+
+When you run a Terraform command that requires the remote state data, Terraform sends a request to the S3 API to fetch the state file.
+
+The S3 API retrieves the state file from the S3 bucket and sends it back to Terraform.
+
+Terraform receives the state file and uses it to compare the current state of the infrastructure with the desired state defined in your Terraform code.
+
+After generating a plan, Terraform may also write changes to the state file and upload it back to the S3 bucket as part of the terraform apply process.
+
+Note that Terraform will automatically manage versioning of the state file in the S3 bucket, so you can always go back to previous versions of the state if needed.
